@@ -1,0 +1,1118 @@
+---
+# br-1
+- summary: |
+    Нельзя добавить один товар множество раз в корзину
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+    2. Нажать 15 раз на кнопку "В корзину" у товара "Essence Mascara Lash Princess
+    3. Открыть корзину
+  expected-result: |
+    В корзине отображается товар "Essence Mascara Lash Princess" в количестве 15 штук
+  actual-result: |
+    В корзине отображается товар "Essence Mascara Lash Princess" в количестве 5 штук
+
+# br-2
+- summary: |
+    Неправильно суммируется итоговая стоимость товаров в корзине
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+    2. Нажать 2 раза на кнопку "В корзину" у товара "Essence Mascara Lash Princess"
+    3. Нажать 2 раза на кнопку "В корзину" у товара "Eyeshadow Palette with Mirror"
+    4. Открыть корзину
+  expected-result: |
+    "Сумма" должна составлять 56.32 долларов
+  actual-result: |
+    "Сумма" составляет 56.33
+
+# br-3
+- summary: |
+    Цена до скидки у товара не суммируется в корзине
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+    2. Нажать 2 раза на кнопку "В корзину" у товара "Essence Mascara Lash Princess"
+    3. Открыть корзину
+  expected-result: |
+    Цена до скидки (где перечёркнута цена) должна составлять 19.98 долларов
+  actual-result: |
+    Цена до скидки (где перечёркнута цена) не меняется и составляет 9.99 долларов
+
+# br-4
+- summary: |
+    Товары в корзине не сохраняются когда сайт открывается в новой вкладке
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+    2. Добавить любой товар в корзину
+    3. Открыть корзину
+    4. Убедиться, что товар в корзине и она не пуста
+    5. Открыть главную страницу https://hexlet-products-store.vercel.app/ в новой вкладке браузера
+    6. Открыть корзину
+  expected-result: |
+    В корзине должен быть сохранён добавленный товар
+  actual-result: |
+    Корзина пуста. Товар не сохраняется
+
+# br-5
+- summary: |
+    Товар в корзине удаляется поштучно, а не полностью, при нажатии "Удалить"
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+    2. Нажать 2 раза на кнопку "В корзину" у товара "Essence Mascara Lash Princess"
+    3. Открыть корзину
+    4. Нажать на кнопку "Удалить" в поле товара
+  expected-result: |
+    Товар удалён из корзины
+  actual-result: |
+    Товар в корзине. Количество товара снизилось на 1 шт
+
+# br-6
+- summary: |
+    Отсутствует ввод информации о покупателе при оформлении заказа
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+    2. Нажать на кнопку "В корзину" у товара "Essence Mascara Lash Princess"
+    3. Открыть корзину
+    4. Нажать на кнопку "Оформить заказ"
+  expected-result: |
+    Появляется модальное окно с вводом номера телефона/электронной почты покупателя
+  actual-result: |
+    Заказ оформляется сразу. Появляется модальное окно с надписью "Заказ успешно формлен"
+
+# br-7
+- summary: |
+    Заказ не оформляется после отправки. Ошибка 500
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+    2. Нажать на кнопку "В корзину" у товара "Essence Mascara Lash Princess"
+    3. Открыть корзину
+    4. Нажать на кнопку "Оформить заказ"
+  expected-result: |
+    Заказ успешно отправлен на сервер.
+  actual-result: |
+    Появляется модальное окно с надписью "Заказ успешно формлен". Код запроса 500. Запрос является GET
+
+# br-8
+- summary: |
+    Ошибка в слове "Оформлен" в модальном окне оформления заказа
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+    2. Нажать на кнопку "В корзину" у товара "Essence Mascara Lash Princess"
+    3. Открыть корзину
+    4. Нажать на кнопку "Оформить заказ"
+  expected-result: |
+    Появляется надпись "Заказ успешно оформлен"
+  actual-result: |
+    Ошибка в слове "оформлен". Надпись "Заказ успешно формлен"
+
+# br-9
+- summary: |
+    Главный логотип сайта не кликабельный
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть корзину https://hexlet-products-store.vercel.app/cart
+    2. Нажать на логотип "Hexlet Store" в верхнем левом углу
+  expected-result: |
+    Открывается главная страница сайта по адресу https://hexlet-products-store.vercel.app/
+  actual-result: |
+    Ничего не происходит. Логотип не кликабельный.
+
+# br-10
+- summary: |
+    Непоследовательность страниц в каталоге.
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "Следующая" до последней страницы каталога
+    3. Нажать на кнопку "Предыдущая" до первой страницы каталога
+  expected-result: |
+    Страницы переключаются в изначальной последовательности
+  actual-result: |
+    Появляются новые страницы страницы каталога, которых не было раннее.
+
+# br-11
+- summary: |
+    Непоследовательность количества товаров на каждой странице каталога
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Посчитать количество товаров на странице. Должно быть 30
+    3. Нажать на кнопку "Следующая"
+    4. Посчитать количество товаров на странице. Должно быть 30
+  expected-result: |
+    На каждой странице количество товаров составляет 30 штук
+  actual-result: |
+    На второй странице количество товаров 28 штук
+
+# br-12
+- summary: |
+    Отсутсвует пагинация на странице каталога
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+  expected-result: |
+    На странице каталога между кнопками "Предыдущая" и "Следующая" должна быть пагинация
+  actual-result: |
+    Пагинация отсутствует.
+
+# br-13
+- summary: |
+    После ввода в поиск несуществующего товара, кнопки навигации сохраняются на странице каталога
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Ввести в поиск "asdqweas"
+  expected-result: |
+    Появляется надпись "Ничего не найдено. Кнопки "Предыдущая" и "Следующая" отсутствуют
+  actual-result: |
+    Появляется надпись "Ничего не найдено". Кнопки "Предыдущая" и "Следующая" остаются на месте
+
+# br-14
+- summary: |
+    После перехода на следующую страницу каталога, меняется содержание левого блока на каждой страницы
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Посмотреть содержание левого блока под надписью "Производитель"
+    3. Нажать на кнопку "Следующая" в каталоге товаров.
+    4. Повторить пункты 2 и 3 до последней страницы каталога
+  expected-result: |
+    Содержание левого меню не меняется. На каждой странице те же производители, что и на первой
+  actual-result: |
+    На каждой странице появляются новые производители, либо отсутствуют вовсе
+
+# br-15
+- summary: |
+    Отсутствует название производителя в левом блоке на странице каталога
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Посмотреть левый блок каталога под надписью "Производитель"
+  expected-result: |
+    Напротив всех чекбоксов указано название производителей
+  actual-result: |
+    В последнем чекбоксе отсутствует название производителя
+
+# br-16
+- summary: |
+    Меняется содержание списка "Категория" при переходе по страницам каталога
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Посмотреть содержание списка "Категория" в левом блоке каталога, нажав на него
+    3. Нажать на кнопку "Следующая" в каталоге
+    4. Посмотреть содержание списка "Категория" в левом блоке каталога, нажав на него
+  expected-result: |
+    Содержание списка "Категория" не меняется после перехода на другие страницы каталога
+  actual-result: |
+    На каждой странице каталога появляется новое содержание списка "Категория"
+
+# br-17
+- summary: |
+    Навигационные кнопки каталога сохраняются, при фильтрации товаров, если товаров на странице меньше 31
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Активировать чекбокс "Essence" в левом блоке каталоге под "Производитель"
+  expected-result: |
+    Навигационные кнопки каталога отсутствуют, т.к. на странице каталога отображен 1 товар
+  actual-result: |
+    Навигационные кнопки каталога "Предыдущая" и "Следующая" не исчезают
+
+# br-18
+- summary: |
+    Навигационные кнопки каталога сохраняются при фильтрации товаров, если товаров на странице меньше 31
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Активировать чекбокс "Essence" в левом блоке каталоге под "Производитель"
+  expected-result: |
+    Навигационные кнопки каталога отсутствуют, т.к. на странице каталога отображен 1 товар
+  actual-result: |
+    Навигационные кнопки каталога "Предыдущая" и "Следующая" не исчезают
+
+# br-19
+- summary: |
+    Фильтр "Цена" не отображает товары с точной ценой
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" ввести 9.27 в первое окно "От"
+    3. В фильтре "Цена" ввести 9.27 во второе окно "До"
+  expected-result: |
+    Отображается товар с данной ценой - "Essence Mascara Lash Princess"
+  actual-result: |
+    Ничего не отображается
+
+# br-20
+- summary: |
+    Фильтр "Цена" не отображает товары, если в поле "До" ввести на 0.01 больше, чем в поле "От"
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" ввести 9.27 в первое поле ввода "От"
+    3. В фильтре "Цена" ввести 9.28 во второе окно "До"
+  expected-result: |
+    Отображаются товары с данной ценой. В данном случае "Essence Mascara Lash Princess" с ценой 9.27
+  actual-result: |
+    Ничего не отображается
+
+# br-21
+- summary: |
+    Фильтр "Цена" не отображает товары с предграничным значением в поле "До"
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" ввести 9.27 в первое поле ввода "От"
+    3. В фильтре "Цена" ввести 9.99 во второе поле ввода "До"
+  expected-result: |
+    Отображаются товары в выбранном диапазоне. В данном случае "Essence Mascara Lash Princess" с ценой 9.27
+  actual-result: |
+    Ничего не отображается
+
+# br-22
+- summary: |
+    Фильтр "Цена" отображает лишний товар, который находится вне диапазоне поиска
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" ввести 9.27 в первое поле ввода "От"
+    3. В фильтре "Цена" во второе поле ввода "До" ввести 10
+  expected-result: |
+    Отображаются товары в выбранном диапазоне. В данном случае "Essence Mascara Lash Princess" с ценой 9.27
+  actual-result: |
+    Помимо искомого товара отображается товар, который не входит в поисковой диапазон. "Chicken Meat" цена которого 8.95
+
+# br-23
+- summary: |
+    Фильтр "Цена" не отображает товары, если ввести граничные значения товара
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" ввести 9.26 в первое поле ввода "От"
+    3. В фильтре "Цена" во второе поле ввода "До" ввести 9.28
+  expected-result: |
+    Отображаются товары в выбранном диапазоне. В данном случае "Essence Mascara Lash Princess" с ценой 9.27
+  actual-result: |
+    Ничего не отображается
+  
+# br-24
+- summary: |
+    В фильтре "Цена" в поле ввода "От" вводится буква
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" в поле ввода "От" ввести qwerty
+  expected-result: |
+    Ничего не вводится
+  actual-result: |
+    Вводится буква e
+
+# br-25
+- summary: |
+    В фильтре "Цена" в поле ввода "До" вводится буква
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" в поле ввода "До" ввести qwerty
+  expected-result: |
+    Ничего не вводится
+  actual-result: |
+    Вводится буква e
+
+# br-26
+- summary: |
+    В фильтре "Цена" в поле ввода "От" вводятся спец символы
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" в поле ввода "От" ввести +-
+  expected-result: |
+    Ничего не вводится
+  actual-result: |
+    Спец символы +- вводятся в поле
+
+# br-27
+- summary: |
+    В фильтре "Цена" в поле ввода "До" вводятся спец символы
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" в поле ввода "До" ввести +-
+  expected-result: |
+    Ничего не вводится
+  actual-result: |
+    Спец символы +- вводятся в поле
+
+# br-28
+- summary: |
+    В фильтре цена в поле ввода "До" значение может снижаться ниже 0
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. В фильтре поиска "Цена" в поле ввода "До" нажать на кнопку стрелки вниз, которая снижает значение
+  expected-result: |
+    Ничего не происходит. Отображается 0
+  actual-result: |
+    Значение снижается. Отображается -1
+
+# br-29
+- summary: |
+    Отсутствует название колонок у таблицы товаров в корзине
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Добавить в корзину любой товар
+    3. Открыть корзину
+  expected-result: |
+    Над товаром есть наименования столбцов "Название", "Количество", "Цена"
+  actual-result: |
+    Наименования столбцом отсутствуют.
+
+# br-30
+- summary: |
+    Кнопка удаления товара в корзине находится между ценой до скидки и после
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Добавить любой товар в корзину
+    3. Открыть корзину
+  expected-result: |
+    Цена до скидки(перечёркнутая) находится рядом с ценой после скидки
+  actual-result: |
+    Между ценами стоит кнопка "Удалить"
+
+# br-31
+- summary: |
+    Дезинформация в название товара в корзине
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Добавить любой товар в корзину один раз
+    3. Открыть корзину
+  expected-result: |
+    В корзине появляется товар, где написано его название без лишней информации в название.
+  actual-result: |
+    Рядом с названием показывается количество товаров на складе, словно это количество добавленных товаров в корзину
+
+# br-32
+- summary: |
+    Цифры внутри колонки с количеством товаров в корзине съезжают
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Добавить в корзину 3 разных товара
+    3. Открыть корзину
+  expected-result: |
+    В колонке "Количество" цифры распологаются ровно под каждым рядом
+  actual-result: |
+    В колонке "Количество" цифры съезжают и расположены неровноe
+
+# br-33
+- summary: |
+    Название товаров не переведены на русский язык в русскоязычной версии сайта
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+  expected-result: |
+    Название товаров переведены на русский язык с сохранением названия брендов на английском языке
+  actual-result: |
+    Все товары не переведены и написаны на английском языке. Например "Cooking oil", "Cucumber"
+
+# br-34
+- summary: |
+    Описание товаров на главной странице не переведены на русский язык в русскоязычной версии сайта
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+  expected-result: |
+    Описание товаров переведены на русский язык с сохранением названия брендов на английском языке
+  actual-result: |
+    Все описания товаров не переведены и написаны на английском языке
+
+# br-35
+- summary: |
+    Описание товаров на их странице не переведены на русский язык в русскоязычной версии сайта
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на любую карточку товара
+    3. Открывается картчока товара
+  expected-result: |
+    Описание товаров переведены на русский язык с сохранением названия брендов на английском языке
+  actual-result: |
+    Все описания товаров не переведены и написаны на английском языке
+
+# br-36
+- summary: |
+    Описание товара находится под товаром, если открыть карточку товара
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на любую карточку товара
+    3. Открывается картчока товара
+  expected-result: |
+    Описание товара расположено справа от фотографии товара
+  actual-result: |
+    Описание находится внизу(под фотографией товара). Нужно скроллить вниз, чтобы его увидеть
+
+# br-37
+- summary: |
+    Хэштеги на страницах товаров не работают
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на любую карточку товара
+    3. Открывается картчока товара
+    4. Нажать на хэштег сверху от названия товара
+  expected-result: |
+    Открывается страница, где показаны все товары данной категории
+  actual-result: |
+    Ничего не открывается. В адресной строке браузера добавляется "#" к URI
+
+# br-38
+- summary: |
+    Нет возможности оценить товар
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на любую карточку товара
+    3. Открывается картчока товара
+  expected-result: |
+    Открывается страница товара, показан рейтинг товара с его возможностью оценки
+  actual-result: |
+    Открывается страница товара. Показан только рейтинг товара
+
+# br-39
+- summary: |
+    Название категорий не переведены на русский язык в русскоязычной версии сайта
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на фильтр "Категория" слева.
+  expected-result: |
+    В выпадающем списке показаны категории на русском языке
+  actual-result: |
+    В выпадающем списке названия категорий не переведены на русский язык
+
+# br-40
+- summary: |
+    Выпадающий список кнопки "Язык" не закрывается после нажатия на пустое пространство
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "Язык" в шапке сайта
+    3. Нажать на любое свободное пространство
+  expected-result: |
+    Выпадающий список закрывается
+  actual-result: |
+    Выпадающий список не закрывается
+
+# br-41
+- summary: |
+    Выпадающий список кнопки "Язык" не закрывается после нажатия на любую другую кнопку
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "Язык" в шапке сайта
+    3. Нажать на кнопку "Корзина"
+  expected-result: |
+    Открывается корзина. Выпадающий список закрывается
+  actual-result: |
+    Открывается корзина. Выпадающий список не закрывается
+
+# br-42
+- summary: |
+    Выпадающий список кнопки "Категрия" не закрывается после нажатия на пустое пространство
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "Категория" в шапке сайта
+    3. Нажать на любое свободное пространство
+  expected-result: |
+    Выпадающий список закрывается
+  actual-result: |
+    Выпадающий список не закрывается
+
+# br-43
+- summary: |
+    Выпадающий список кнопки "Категрия" не закрывается после нажатия на любую другую кнопку
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "Категория" в шапке сайта
+    3. Нажать на кнопку "Следующая" в каталоге
+  expected-result: |
+    Выпадающий список закрывается
+  actual-result: |
+    Выпадающий список не закрывается
+
+# br-44
+- summary: |
+    Отсутствует иконка у "English" в выпадающем списке "Язык" в шапке сайта
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "Язык" в шапке сайта
+  expected-result: |
+    Открывается выпадающий список с названиями языков и иконками
+  actual-result: |
+    Открывается выпадающий список. У элемента "English" отсутствует иконка. Неправильно указан путь к иконке.
+
+# br-45
+# баг ли это?
+- summary: |
+    Название элемента выпадающего списка "Russian" должен быть написан на русском
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "Язык" в шапке сайта
+  expected-result: |
+    Открывается выпадающий список с названиями языков "English" и "Русский"
+  actual-result: |
+    Открывается выпадающий список с названиями языков "English" и "Russian"
+
+# br-46
+# баг ли это?
+- summary: |
+    После нажатия на кнопку "Магазин" из корзины, открывается та же страница каталога, что была до перехода
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "Следующая" в каталоге
+    3. Нажать на кнопку "Корзина"
+    4. Нажать на кнопку "Магазин"
+  expected-result: |
+    Открывается первая страница каталога
+  actual-result: |
+    Открывается вторая страница каталога
+
+# br-47
+# скорее как improve нежели баг
+- summary: |
+    Отсутствует уведомление о добавленном товаре, после его добавления в корзину
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на кнопку "В корзину" у любого товара
+  expected-result: |
+    Появляется уведомление, что товар добавлен в корзину
+  actual-result: |
+    Уведомления нет
+
+# br-48
+- summary: |
+    На странице карточек товара основные фотографии размыты
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на любой товар
+  expected-result: |
+    Открывается страница товара. Фотография не размыта
+  actual-result: |
+    Открывается страница товара. Фотография размыта. Неподходящее разрешение
+
+# br-49
+- summary: |
+    На русскоязычной версии сайта на странице карточек товара не переведено слово "Off" у процента скидки
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Нажать на любой товар
+  expected-result: |
+    Открывается страница товара. Возле процента скидки написано слово "Скидка"
+  actual-result: |
+    Открывается страница товара. Возле процента скидки написано слово "Off"
+
+# br-50
+- summary: |
+    На брейкпоинте 991х729 пикселей поле ввода "Поиск" выходит за границу контейнера
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 991х729 пикселей
+  expected-result: |
+    Поле ввода "Поиск" не выходит за границу контейнера
+  actual-result: |
+    Поле ввода "Поиск" выходит за границу контейнера. Ширина элемента не меняется
+
+# br-51
+- summary: |
+    На брейкпоинте 991х729 пикселей не отображаются цифры в поле ввода "От" и "До" в фильтре "Цена"
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 991х729 пикселей
+    4. Нажать на поле ввода "От" в фильтре "Цена"
+    5. Ввести 12345
+    6. Нажать на поле ввода "До" в фильтре "Цена"
+    7. Ввести 12345
+  expected-result: |
+    Цифры 12345 отображаются в поле ввода
+  actual-result: |
+    Цифры 12345 не отображаются
+
+# br-52
+- summary: |
+    На брейкпоинте 991х729 пикселей кнопка "Язык" в шапке меню расположена неровно
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 991х729 пикселей
+  expected-result: |
+    Расположение кнопки "Язык" (в меню шапки сайта) выравнивается с другими кнопками
+  actual-result: |
+    Расположение кнопки "Язык" (в меню шапки сайта) находится по середине по отношению к другим кнопкам
+
+# br-53
+- summary: |
+    На брейкпоинте 991х729 пикселей фотографии товаров размываются
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 991х729 пикселей
+  expected-result: |
+    Фотографии товаров в каталоге не размыты и имеют подходящее разрешение
+  actual-result: |
+    Фотографии товаров в каталоге размазмыты из-за смены их разрешения
+
+# br-54
+- summary: |
+    На брейкпоинте 991х729 пикселей кнопка "Корзина" смещается влево после добавления товара
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 991х729 пикселей
+    4. Добавить любой товар в корзину
+  expected-result: |
+    Кнопка "Корзина" в шапке сайта не меняет своего места положения
+  actual-result: |
+    Кнопка "Корзина" в шапке сайта смещается влево
+
+# br-55
+- summary: |
+    На брейкпоинте 991х729 пикселей кнопка "Язык" смещается влево после нажатия
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 991х729 пикселей
+    4. Нажать на кнопку "Язык" в меню шапке сайта
+  expected-result: |
+    Открывается выпадающий список. Ничего не смещается
+  actual-result: |
+    Открывается выпадающий список. Кнопка смещается влево
+
+# br-56
+- summary: |
+    На брейкпоинте 991х729 пикселей и ниже, после нажатия на кнопку "Язык", шапка сайта меняет высоту
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 991х729 пикселей
+    4. Нажать на кнопку "Язык" в меню шапке сайта
+  expected-result: |
+    Открывается выпадающий список. Ничего больше не происходит
+  actual-result: |
+    Открывается выпадающий список. Шапка сайта растягивается по высоте выпадающего списка
+
+# br-57
+- summary: |
+    На брейкпоинте 767х729 пикселей поле ввода "Поиск" выходит за границу контейнера
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 767х729 пикселей
+  expected-result: |
+    Поле ввода "Поиск" не выходит за границу контейнера
+  actual-result: |
+    Поле ввода "Поиск" выходит за границу контейнера. Ширина элемента не меняется
+
+# br-58
+- summary: |
+    На брейкпоинте 767х729 пикселей не отображаются цифры в поле ввода "От" и "До" в фильтре "Цена"
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 767х729 пикселей
+    4. Нажать на поле ввода "От" в фильтре "Цена"
+    5. Ввести 12345
+    6. Нажать на поле ввода "До" в фильтре "Цена"
+    7. Ввести 12345
+  expected-result: |
+    Цифры 12345 отображаются в поле ввода
+  actual-result: |
+    Цифры 12345 не отображаются
+
+# br-59
+- summary: |
+    На брейкпоинте 767х729 пикселей кнопка "Язык" в шапке меню расположена неровно
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 767х729 пикселей
+  expected-result: |
+    Расположение кнопки "Язык" (в меню шапки сайта) выравнивается с другими кнопками
+  actual-result: |
+    Расположение кнопки "Язык" (в меню шапки сайта) находится по середине по отношению к другим кнопкам
+
+# br-60
+- summary: |
+    На брейкпоинте 767х729 пикселей кнопка "Корзина" смещается влево после добавления товара
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 767х729 пикселей
+    4. Добавить любой товар в корзину
+  expected-result: |
+    Кнопка "Корзина" в шапке сайта не меняет своего места положения
+  actual-result: |
+    Кнопка "Корзина" в шапке сайта смещается влево
+
+# br-61
+- summary: |
+    На брейкпоинте 767х729 пикселей кнопка "Язык" смещается влево после нажатия
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 767х729 пикселей
+    4. Нажать на кнопку "Язык" в меню шапке сайта
+  expected-result: |
+    Открывается выпадающий список. Ничего не смещается
+  actual-result: |
+    Открывается выпадающий список. Кнопка смещается влево
+
+# br-62
+- summary: |
+    На брейкпоинте 767х729 пикселей и ниже, после нажатия на кнопку "Язык", шапка сайта меняет высоту
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 767х729 пикселей
+    4. Нажать на кнопку "Язык" в меню шапке сайта
+  expected-result: |
+    Открывается выпадающий список. Ничего больше не происходит
+  actual-result: |
+    Открывается выпадающий список. Шапка сайта растягивается по высоте выпадающего списка
+
+
+# br-63
+- summary: |
+    На брейкпоинте 767х729 пикселей в корзине количество товаров сливается с ценой до скидки
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 767х729 пикселей
+    4. Добавить любой товар в корзину
+    5. Открыть корзину
+  expected-result: |
+    В поле товара показано количество добавленного товара отдельно от цены до скидки
+  actual-result: |
+    В поле товара количество добавленного товара сливается с ценой до скидки
+
+# br-64
+- summary: |
+    На брейкпоинте 456х729 пикселей поле ввода "Поиск" выходит за границу контейнера
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+  expected-result: |
+    Поле ввода "Поиск" не выходит за границу контейнера
+  actual-result: |
+    Поле ввода "Поиск" выходит за границу контейнера. Ширина элемента не меняется
+
+# br-65
+- summary: |
+    На брейкпоинте 456х729 пикселей не отображаются цифры в поле ввода "От" и "До" в фильтре "Цена"
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+    4. Нажать на поле ввода "От" в фильтре "Цена"
+    5. Ввести 12345
+    6. Нажать на поле ввода "До" в фильтре "Цена"
+    7. Ввести 12345
+  expected-result: |
+    Цифры 12345 отображаются в поле ввода
+  actual-result: |
+    Цифры 12345 не отображаются
+
+# br-66
+- summary: |
+    На брейкпоинте 456х729 пикселей кнопка "Язык" в шапке меню расположена неровно
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+  expected-result: |
+    Расположение кнопки "Язык" (в меню шапки сайта) выравнивается с другими кнопками
+  actual-result: |
+    Расположение кнопки "Язык" (в меню шапки сайта) находится по середине по отношению к другим кнопкам
+
+# br-67
+- summary: |
+    На брейкпоинте 456х729 пикселей кнопка "Корзина" смещается влево после добавления товара
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+    4. Добавить любой товар в корзину
+  expected-result: |
+    Кнопка "Корзина" в шапке сайта не меняет своего места положения
+  actual-result: |
+    Кнопка "Корзина" в шапке сайта смещается влево
+
+# br-68
+- summary: |
+    На брейкпоинте 456х729 пикселей кнопка "Язык" смещается влево после нажатия
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+    4. Нажать на кнопку "Язык" в меню шапке сайта
+  expected-result: |
+    Открывается выпадающий список. Ничего не смещается
+  actual-result: |
+    Открывается выпадающий список. Кнопка смещается влево
+
+# br-69
+- summary: |
+    На брейкпоинте 456х729 пикселей и ниже, после нажатия на кнопку "Язык", шапка сайта меняет высоту
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+    4. Нажать на кнопку "Язык" в меню шапке сайта
+  expected-result: |
+    Открывается выпадающий список. Ничего больше не происходит
+  actual-result: |
+    Открывается выпадающий список. Шапка сайта растягивается по высоте выпадающего списка
+
+
+# br-70
+- summary: |
+    На брейкпоинте 456х729 пикселей в корзине количество товаров сливается с ценой до скидки
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+    4. Добавить любой товар в корзину
+    5. Открыть корзину
+  expected-result: |
+    В поле товара показано количество добавленного товара отдельно от цены до скидки
+  actual-result: |
+    В поле товара количество добавленного товара сливается с ценой до скидки
+
+# br-71
+- summary: |
+    На брейкпоинте 456х729 пикселей фотографии товаров размываются
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+  expected-result: |
+    Фотографии товаров в каталоге не размыты и имеют подходящее разрешение
+  actual-result: |
+    Фотографии товаров в каталоге размазмыты из-за смены их разрешения
+
+# br-72
+- summary: |
+    На брейкпоинте 456х729 основной блок каталога товаров смещен вниз
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+  expected-result: |
+    Основной блок каталога появляется справа от блока фильтрации
+  actual-result: |
+    Основной блок каталога смещён вниз под блоком фильтрации.
+
+# br-73
+- summary: |
+    На брейкпоинте 456х729 цена добавленных товаров в корзине выходит за границу
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+    4. Добавить несколько любых разных товаров
+    5. Открыть корзину
+  expected-result: |
+    Цена товара находится в рамках поля товара
+  actual-result: |
+    Цена товара выходит за рамки поля товара
