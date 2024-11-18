@@ -97,12 +97,12 @@ test-cases:
 test-cases:
   - summary: |
       Проверка корректности работы по полю "поиск"
-    status: fail
+    status: pass
 
 test-cases:
   - summary: |
       Проверка поиска по ключевому слову названия товара
-    status: fail
+    status: pass
 
 test-cases:
   - summary: |
@@ -238,3 +238,254 @@ test-cases:
   - summary: |
       При понижении числа через кнопку в поле "До" число не должно понизиться ниже 0
     status: fail
+
+bugreports:
+  - summary: |
+      Левый блок с фильтрами расширяется, если в каталоге появляется лишь один товар
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. В левом блоке в фильтре "Цена" ввести 1 во втором поле "До"
+    expected-result: |
+      Появляется один товар "Green Chili Pepper". Никакой интерфейс не расширяется
+    actual-result: |
+      Появляется один товар "Green Chili Pepper". Поле "Поиск" и поля фильтра "Цена" становятся шире
+
+  - summary: |
+      Карточка товара уменьшается в ширине, если в каталоге отображается только один товар
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. В левом блоке в фильтре "Цена" ввести 1 во втором поле "До"
+    expected-result: |
+      Появляется товар "Green Chili Pepper". Карточка товара соответствует обычным размерам
+    actual-result: |
+      Появляется товар "Green Chili Pepper". Карточка товара уменьшается в ширине, по сравнению со всеми карточками. Кнопка "В корзину" не влезает в рамку
+
+  - summary: |
+      Левый блок с фильтрами расширяется, если в каталоге появляется лишь один товар
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. В левом блоке в фильтре "Цена" ввести 1 во втором поле "До"
+    expected-result: |
+      Появляется один товар "Green Chili Pepper". Никакой интерфейс не расширяется
+    actual-result: |
+      Появляется один товар "Green Chili Pepper". Поле "Поиск" и поля фильтра "Цена" становятся шире
+
+  - summary: |
+      При фильтрации по полю "Поиск" не показываются товары с другой страницы
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. В левом блоке в фильтре "Поиск" ввести "Soft Drinks"
+    expected-result: |
+      В каталоге отображается товар "Soft Drinks", который находится на второй странице каталога
+    actual-result: |
+      Данный товар не отображается. Отображаются товары с первой страницы
+
+  - summary: |
+      При вводе некорректного значения в поле "Поиск" показываются товары с первой страницы
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. В левом блоке в фильтре "Поиск" ввести "qwerty1"
+    expected-result: |
+      В каталоге появляется надпись "Ничего не найдено"
+    actual-result: |
+      Отображаются все товары с первой страницы
+      
+  - summary: |
+      Опция без названия в выпадающем списке "Категория"
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. Нажать на выпадающий список "Категория"
+    expected-result: |
+      В выпадающем списке появляются все категории с их названиями
+    actual-result: |
+      Первая опция не имеет названия. Должна обозначать все категории
+
+  - summary: |
+      Пропадает кнопка навигации в каталоге при выборе опции без названия в "Категория"
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. Нажать на выпадающий список "Категория"
+      3. Нажать на первую опцию, которая не имеет названия
+    expected-result: |
+      Данная опция должна являться выбором всех категорий. Навигационная кнопка "Следующая" должна сохраниться
+    actual-result: |
+      Навигационная кнопка "Следующая" пропадает в каталоге. Приходится перезапускать страницу, чтобы она снова появилась
+
+  - summary: |
+      После нажатия на кнопку "Следующая" в каталоге на некоторое время появляются обе кнопки навигации
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. Нажать на кнопку "Следующая" на странице каталога
+    expected-result: |
+      Кнопка "Следующая" сразу меняется на кнопку "Предыдущая". Открывается следующая страница каталога
+    actual-result: |
+      Появляются кнопки "Следующая" и "Предыдущая" на некоторое время. Открывается следующая страница каталога
+
+  - summary: |
+      После нажатия на кнопку "Магазин" сайт переключается на англоязычную версию
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. Нажать на кнопку "Магазин" в шапке сайта
+    expected-result: |
+      Открывается главная страница сайта
+    actual-result: |
+      Открывается главная страница сайта на английском языке
+
+  - summary: |
+      Не отображаются товары с другой страницы каталога при выборе категории
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. Нажать на выпадающий список "Категория"
+      3. Выбрать опцию "groceries"
+    expected-result: |
+      Показываются все товары в категории groceries с первой и второй страницы каталога
+    actual-result: |
+      Показываются товары только с первой страницы каталога
+
+    - summary: |
+      Не отображаются товары с другой страницы каталога при поиске по цене
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. В фильтре "Цена" в поле "От" ввести 0.01
+      3. В фильтре "Цена" в поле "До" ввести 1
+    expected-result: |
+      Появляются два товара в каталоге. "Green Chili Pepper" с первой страницы и "Water" со второй
+    actual-result: |
+      Появляется только "Green Chili Pepper" с первой страницы каталога
+
+    - summary: |
+      Максимальная цена поиска в фильтре "Цена" в поле "До" отличаются на разных страницах каталога
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. Посмотреть на placeholder в поле "До" у фильтра "Цена"
+      3. Нажать на кнопку "Следующая" в каталоге
+      4. Посмотреть на placeholder в поле "До" у фильтра "Цена"
+    expected-result: |
+      Placeholder на первой и на второй странице одинаковые - 6577.499999999995
+    actual-result: |
+      Placeholder на первой странице - 6577.499999999995, а на второй - 454.8000000000001
+
+  - summary: |
+      После нажатия на хэштег в карточке товара, сайт переходит на англоязычную версию
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app/
+      2. Нажать на любой товар
+      3. Нажать на хэштег товара над его названием
+    expected-result: |
+      Открывается каталог с сайта с выбранной категорией товаров. Язык сайта не меняется
+    actual-result: |
+      Открывается каталог с сайта с выбранной категорией товаров. Язык сайта переключается на английский  
+
+    - summary: |
+      На брейкпоинте 767х729 пикселей левый блок с фильтрами смещается вниз страницы
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app
+      2. Открыть dev tools
+      3. Выставить разрешение 767х729 пикселей
+      4. Проскроллить страницу вниз до конца
+    expected-result: |
+      Блок с фильтрами расположен слева
+    actual-result: |
+      Блок с фильтрами расположен в конце страницы
+
+    - summary: |
+      На брейкпоинте 767х729 пикселей фотографии товаров обрезаны
+    environment: |
+      Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+      OC windows 11
+      Website v.2
+    steps-to-reproduce: |
+      1. Открыть главную страницу https://hexlet-products-store.vercel.app
+      2. Открыть dev tools
+      3. Выставить разрешение 767х729 пикселей
+    expected-result: |
+      Фотографии карточек товаров показываются в полный размер
+    actual-result: |
+      Фотографии карточек обрезаны сверху и снизу. Фотографии показываются не в полный размер
+
+  - summary: |
+    На брейкпоинте 456х729 пикселей левый блок с фильтрами смещается вниз страницы
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+    Website v.2
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+    4. Проскроллить страницу вниз до конца
+  expected-result: |
+    Блок с фильтрами расположен слева
+  actual-result: |
+    Блок с фильтрами расположен в конце страницы
+
+    - summary: |
+      На брейкпоинте 456х729 пикселей фотографии товаров обрезаны
+  environment: |
+    Google chrome Version 130.0.6723.117 (Official Build) (64-bit)
+    OC windows 11
+    Website v.2
+  steps-to-reproduce: |
+    1. Открыть главную страницу https://hexlet-products-store.vercel.app
+    2. Открыть dev tools
+    3. Выставить разрешение 456х729 пикселей
+  expected-result: |
+    Фотографии карточек товаров показываются в полный размер
+  actual-result: |
+    Фотографии карточек обрезаны сверху и снизу. Фотографии показываются не в полный размер
