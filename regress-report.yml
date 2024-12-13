@@ -431,7 +431,7 @@ bugreports:
       Кнопка "Следующая" сразу меняется на кнопку "Предыдущая". Открывается следующая страница каталога
     actual-result: |
       Появляются кнопки "Следующая" и "Предыдущая" на некоторое время. Открывается следующая страница каталога
-# regress-8 new
+# regress-8
   - summary: |
       После нажатия на кнопку "Предыдущая" в каталоге карточки товаров смещаются вверх на короткое время
     environment: |
@@ -447,7 +447,7 @@ bugreports:
     actual-result: |
       Содержимое каталога товаров "Подпрыгивает" вверх на короткое время, а затем возвращаются в исходную позицию
 
-# regress-9 new
+# regress-9
   - summary: |
       Кнопки навигации в каталоге наслаиваются друг на друга
     environment: |
@@ -477,7 +477,7 @@ bugreports:
       Открывается главная страница сайта на русском языке
     actual-result: |
       Открывается главная страница сайта на английском языке
-# regress-10.1 new
+# regress-10.1
   - summary: |
       После обновления страницы сайт переключается на английский язык
     environment: |
@@ -540,7 +540,7 @@ bugreports:
       Блок с фильтрами расположен слева
     actual-result: |
       Блок с фильтрами расположен в конце страницы
-# regress-14 fixed
+# regress-14
   - summary: |
       Фотографии товаров обрезаны на странице каталога
     environment: |
@@ -559,7 +559,7 @@ bugreports:
       Скриншот: https://github.com/Dmitrydrum/qa-engineer-project-84/blob/0b044c3e1e8f85cdceaa0d0cda42c5d5669f81de/screenshot/regress-14-1.jpg
       Скриншот: https://github.com/Dmitrydrum/qa-engineer-project-84/blob/0b044c3e1e8f85cdceaa0d0cda42c5d5669f81de/screenshot/regress-14-2.jpg
 
-# regress-15 new
+# regress-15
   - summary: |
       После очищения корзины при помощи кнопки "Очистить корзину" и переходе на страницу каталога товары не удаляются
     environment: |
@@ -578,7 +578,7 @@ bugreports:
     actual-result: |
       Товар остался в корзине
 
-# regress-16 new
+# regress-16
   - summary: |
       Кнопки "Удалить" располагаются неровно в корзине
     environment: |
@@ -595,7 +595,7 @@ bugreports:
       В таблице с товарами в колонке кнопки "Удалить" некоторые кнопки располагаются неровно друг под другом у каждого товара
       Скриншот: https://github.com/Dmitrydrum/qa-engineer-project-84/blob/0b044c3e1e8f85cdceaa0d0cda42c5d5669f81de/screenshot/regress-16.jpg
 
-# regress-17 new
+# regress-17
   - summary: |
       Кнопки "Удалить" располагаются неровно в модальномо окне после оформления заказа
     environment: |
@@ -613,7 +613,7 @@ bugreports:
       В модальном окне "количество" товаров располагаются неровно
       Скриншот: https://github.com/Dmitrydrum/qa-engineer-project-84/blob/0b044c3e1e8f85cdceaa0d0cda42c5d5669f81de/screenshot/regress-17.jpg
 
-# regress-18 new
+# regress-18
   - summary: |
       Отсутствует автоскроллинг к началу каталога после нажатия на кнопку навигации в конце каталога
     environment: |
